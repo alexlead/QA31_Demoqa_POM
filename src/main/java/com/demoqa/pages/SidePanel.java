@@ -17,4 +17,20 @@ public class SidePanel extends BasePage{
         click(practiceForm);
         return new PracticeFormPage(driver);
     }
+
+    @FindBy(xpath = "//span[.='Alerts']")
+    WebElement alerts;
+    public PracticeFormPage selectAlerts() {
+        click(alerts);
+        return new PracticeFormPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Browser Windows']")
+    WebElement browserWindows;
+    public PracticeFormPage selectBrowserWindows() {
+
+        click(browserWindows);
+
+        return new PracticeFormPage(driver);
+    }
 }

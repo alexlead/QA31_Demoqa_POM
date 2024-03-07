@@ -4,6 +4,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
+
+import java.util.concurrent.CompletionService;
 
 public class PracticeFormPage extends BasePage{
 
@@ -104,6 +107,46 @@ public class PracticeFormPage extends BasePage{
 
     public PracticeFormPage uploadFile(String path) {
         uploadPicture.sendKeys(path);
+        return this;
+    }
+@FindBy(id="state")
+    WebElement stateContainer;
+    @FindBy(id="react-select-3-input")
+    WebElement stateInput;
+
+    public PracticeFormPage selectState(String state) {
+        clickWithJS(stateContainer, 0, 300);
+        stateInput.sendKeys(state);
+        stateInput.sendKeys(Keys.ENTER);
+        return this;
+    }
+@FindBy(id="city")
+    WebElement cityContainer;
+    @FindBy(id="react-select-4-input")
+    WebElement cityInput;
+
+
+    public  PracticeFormPage selectCity(String city) {
+        click(cityContainer);
+        cityInput.sendKeys(city);
+        cityInput.sendKeys(Keys.ENTER);
+
+        return this;
+    }
+
+@FindBy(id="submit")
+    WebElement submitButton;
+
+    public PracticeFormPage submit() {
+        click(submitButton);
+        return this;
+//        clickWithJS(submitButton, 0, 300);
+    }
+
+    @FindBy(id="example-modal-sizes-title-lg")
+    WebElement modalWindowTitle;
+    public PracticeFormPage verifyStudentFormTitle(String title) {
+        Assert.assertTrue(modalWindowTitle.getText().contains(title));
         return this;
     }
 }

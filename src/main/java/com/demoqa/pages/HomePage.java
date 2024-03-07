@@ -25,4 +25,12 @@ public class HomePage extends BasePage{
 //        click(buttonLabel);
         return this;
     }
+
+    @FindBy(css = ".card:nth-child(3)")
+    WebElement alertsFrameWindows;
+
+    public SidePanel getAlertFrameWindows() {
+        click(alertsFrameWindows);
+        return new SidePanel(driver);
+    }
 }

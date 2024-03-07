@@ -1,5 +1,6 @@
 package com.demoqa.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -7,10 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 public abstract class BasePage {
 
     WebDriver driver;
+    JavascriptExecutor js;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
+        js=(JavascriptExecutor) driver;
     }
 
     public void click(WebElement element) {
@@ -23,5 +26,15 @@ public abstract class BasePage {
             element.clear();
             element.sendKeys(text);
         }
+    }
+
+    public void hideIframes(){
+        js.executeScript("document.getElementById('fixedban').style.display='none';");
+        js.executeScript("document.querySelector('footer').style.display='none';");
+    }
+
+    public void clickWithJS(WebElement element, int x,int y) {
+        js.executeScript("window.scrollBy("+ x + "," + y + ")");
+        click(element);
     }
 }
