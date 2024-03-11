@@ -33,4 +33,19 @@ public class HomePage extends BasePage{
         click(alertsFrameWindows);
         return new SidePanel(driver);
     }
+
+    @FindBy(css=".card:nth-child(4)")
+    WebElement widget;
+    public SidePanel getWidgets() {
+
+        clickWithJS(widget, 0, 300);
+        return new SidePanel(driver);
+    }
+
+    @FindBy(css=".card:nth-child(1)")
+    WebElement brokenElement;
+    public SidePanel getElements() {
+        clickWithJS(brokenElement, 0, 300);
+        return new SidePanel(driver);
+    }
 }

@@ -10,7 +10,7 @@ public class PracticeFormTests extends TestBase{
 
     @BeforeMethod
     public void precondition() {
-        new HomePage(driver).confirmCookie().getForms();
+        new HomePage(driver).getForms();
         new SidePanel(driver).selectPracticeForm();
     }
 
